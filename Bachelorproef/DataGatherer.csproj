@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2A7B3817-D681-4C52-919B-D03DE241D9EC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DataGatherer</RootNamespace>
+    <AssemblyName>DataGatherer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Console, Version=4.0.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.1\lib\net46\System.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.1\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\201807271236327_InitialCreate.cs" />
+    <Compile Include="Migrations\201807271236327_InitialCreate.Designer.cs">
+      <DependentUpon>201807271236327_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807271310400_migration.cs" />
+    <Compile Include="Migrations\201807271310400_migration.Designer.cs">
+      <DependentUpon>201807271310400_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807281639468_latestmigration.cs" />
+    <Compile Include="Migrations\201807281639468_latestmigration.Designer.cs">
+      <DependentUpon>201807281639468_latestmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DAL\ChampionMap.cs" />
+    <Compile Include="Models\DAL\ChampionWithStatsMap.cs" />
+    <Compile Include="Models\DAL\DataGathererContext.cs" />
+    <Compile Include="Models\DAL\ItemMap.cs" />
+    <Compile Include="Models\DAL\MatchMap.cs" />
+    <Compile Include="Models\DAL\ParticipantMap.cs" />
+    <Compile Include="Models\DAL\SummonerMap.cs" />
+    <Compile Include="Models\Domain\APIKey.cs" />
+    <Compile Include="Models\Domain\ChampionStore.cs" />
+    <Compile Include="Models\Domain\DataCrawler.cs" />
+    <Compile Include="Models\Domain\MatchStore.cs" />
+    <Compile Include="Models\Domain\MyChampion.cs" />
+    <Compile Include="Models\Domain\MyChampionWithStats.cs" />
+    <Compile Include="Models\Domain\MyItem.cs" />
+    <Compile Include="Models\Domain\MyMatch.cs" />
+    <Compile Include="Models\Domain\myParticipant.cs" />
+    <Compile Include="Models\Domain\MySummoner.cs" />
+    <Compile Include="Models\Domain\SummonerStore.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RiotSharp\Caching\Cache.cs" />
+    <Compile Include="RiotSharp\Caching\CacheData.cs" />
+    <Compile Include="RiotSharp\Caching\FileCache.cs" />
+    <Compile Include="RiotSharp\Caching\ICache.cs" />
+    <Compile Include="RiotSharp\Caching\PassThroughCache.cs" />
+    <Compile Include="RiotSharp\Endpoints\ChampionEndpoint\Champion.cs" />
+    <Compile Include="RiotSharp\Endpoints\ChampionEndpoint\ChampionEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\ChampionEndpoint\ChampionList.cs" />
+    <Compile Include="RiotSharp\Endpoints\ChampionMasteryEndpoint\ChampionMastery.cs" />
+    <Compile Include="RiotSharp\Endpoints\ChampionMasteryEndpoint\ChampionMasteryEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\IChampionEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\IChampionMasteryEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\ILeagueEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\IMatchEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\ISpectatorEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\ISummonerEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\IThirdPartyEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticChampionEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticDataEndpoints.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticEndpointProvider.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticItemEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticLanguageStringsEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticMapEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticMasteryEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticProfileIconEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticRealmEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticReforgedRuneEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticRuneEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticSummonerSpellEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticTarballLinkEndPoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\Interfaces\Static\IStaticVersionEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\LeagueEndpoint\Enums\Converters\CharArrayConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\LeagueEndpoint\Enums\Converters\TierConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\LeagueEndpoint\Enums\Tier.cs" />
+    <Compile Include="RiotSharp\Endpoints\LeagueEndpoint\League.cs" />
+    <Compile Include="RiotSharp\Endpoints\LeagueEndpoint\LeagueEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\LeagueEndpoint\LeaguePosition.cs" />
+    <Compile Include="RiotSharp\Endpoints\LeagueEndpoint\MiniSeries.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\BannedChampion.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\AscendedType.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\BuildingType.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\CapturedPoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\AscendedTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\BuildingTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\CapturedPointConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\EventTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\LaneTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\LevelUpTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\MonsterSubTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\MonsterTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\SeasonConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\TowerTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Converters\WardTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\EventType.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\LaneType.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\LevelUpType.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\MonsterSubType.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\MonsterType.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\Season.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\TowerType.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Enums\WardType.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Event.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Frame.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Mastery.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Match.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\MatchDetail.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\MatchEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\MatchList.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\MatchReference.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\MatchSummary.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\MatchTimeline.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Participant.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\ParticipantFrame.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\ParticipantIdentity.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\ParticipantStats.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\ParticipantTimeline.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\ParticipantTimelineData.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Player.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Position.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\Rune.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\TeamBan.cs" />
+    <Compile Include="RiotSharp\Endpoints\MatchEndpoint\TeamStats.cs" />
+    <Compile Include="RiotSharp\Endpoints\SpectatorEndpoint\BannedChampion.cs" />
+    <Compile Include="RiotSharp\Endpoints\SpectatorEndpoint\CurrentGame.cs" />
+    <Compile Include="RiotSharp\Endpoints\SpectatorEndpoint\FeaturedGames.cs" />
+    <Compile Include="RiotSharp\Endpoints\SpectatorEndpoint\Mastery.cs" />
+    <Compile Include="RiotSharp\Endpoints\SpectatorEndpoint\Observer.cs" />
+    <Compile Include="RiotSharp\Endpoints\SpectatorEndpoint\Participant.cs" />
+    <Compile Include="RiotSharp\Endpoints\SpectatorEndpoint\Rune.cs" />
+    <Compile Include="RiotSharp\Endpoints\SpectatorEndpoint\SpectatorEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\BlockItemStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\BlockStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\Cache\ChampionListStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\Cache\ChampionStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\ChampionListStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\ChampionSpellStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\ChampionStandAloneStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\ChampionStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\ChampionStatsStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\Enums\Converters\TagStaticListConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\Enums\TagStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\InfoStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\LevelTipStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\PassiveStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\RecommendedStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\SkinStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Champion\StaticChampionEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ImageStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Item\Cache\ItemListStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Item\GoldStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Item\GroupStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Item\ItemListStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Item\ItemStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Item\ItemTreeStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Item\StaticItemEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\LanguageStrings\Cache\LanguageStringsStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\LanguageStrings\LanguageStringsStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\LanguageStrings\StaticLanguageEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Map\Cache\MapsStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Map\MapsStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Map\MapStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Map\StaticMapEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Mastery\Cache\MasteryListStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Mastery\MasteryListStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Mastery\MasteryStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Mastery\MasteryTreeItemStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Mastery\MasteryTreeListStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Mastery\MasteryTreeStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Mastery\StaticMasteryEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\MetadataStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ProfileIcons\Cache\ProfileIconsStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ProfileIcons\ProfileIconListStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ProfileIcons\ProfileIconStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ProfileIcons\StaticProfileIconEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Realm\Cache\RealmStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Realm\RealmStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Realm\StaticRealmEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ReforgedRune\Cache\ReforgedRuneListStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ReforgedRune\ReforgedRunePathStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ReforgedRune\ReforgedRuneSlotStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ReforgedRune\ReforgedRuneStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\ReforgedRune\StaticReforgedRuneEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Rune\Cache\RuneListStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Rune\RuneListStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Rune\RuneStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Rune\StaticRuneEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\SpellVarStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\StaticDataEndpoints.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\StaticEndpointBase.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\StaticEndpointProvider.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\StatsStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\SummonerSpell\Cache\SummonerSpellListStaticWrapper.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\SummonerSpell\StaticSummonerSpellEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\SummonerSpell\SummonerSpell.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\SummonerSpell\SummonerSpellListStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\SummonerSpell\SummonerSpellStatic.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\TarballLinks\StaticTarballLinkEndPoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StaticDataEndpoint\Version\StaticVersionsEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\StatusEndpoint\Incident.cs" />
+    <Compile Include="RiotSharp\Endpoints\StatusEndpoint\Message.cs" />
+    <Compile Include="RiotSharp\Endpoints\StatusEndpoint\Service.cs" />
+    <Compile Include="RiotSharp\Endpoints\StatusEndpoint\Shard.cs" />
+    <Compile Include="RiotSharp\Endpoints\StatusEndpoint\ShardStatus.cs" />
+    <Compile Include="RiotSharp\Endpoints\StatusEndpoint\Translation.cs" />
+    <Compile Include="RiotSharp\Endpoints\SummonerEndpoint\Summoner.cs" />
+    <Compile Include="RiotSharp\Endpoints\SummonerEndpoint\SummonerBase.cs" />
+    <Compile Include="RiotSharp\Endpoints\SummonerEndpoint\SummonerBaseList.cs" />
+    <Compile Include="RiotSharp\Endpoints\SummonerEndpoint\SummonerEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\TeamEndpoint\MatchHistorySummary.cs" />
+    <Compile Include="RiotSharp\Endpoints\TeamEndpoint\MessageOfDay.cs" />
+    <Compile Include="RiotSharp\Endpoints\TeamEndpoint\Roster.cs" />
+    <Compile Include="RiotSharp\Endpoints\TeamEndpoint\Team.cs" />
+    <Compile Include="RiotSharp\Endpoints\TeamEndpoint\TeamMemberInfo.cs" />
+    <Compile Include="RiotSharp\Endpoints\TeamEndpoint\TeamStatDetail.cs" />
+    <Compile Include="RiotSharp\Endpoints\ThirdPartyEndpoint\ThirdPartyEndpoint.cs" />
+    <Compile Include="RiotSharp\Endpoints\TournamentEndpoint\Enums\Converters\TournamentMapTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\TournamentEndpoint\Enums\Converters\TournamentPickTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\TournamentEndpoint\Enums\Converters\TournamentSpectatorTypeConverter.cs" />
+    <Compile Include="RiotSharp\Endpoints\TournamentEndpoint\Enums\TournamentEventType.cs" />
+    <Compile Include="RiotSharp\Endpoints\TournamentEndpoint\Enums\TournamentMapType.cs" />
+    <Compile Include="RiotSharp\Endpoints\TournamentEndpoint\Enums\TournamentPickType.cs" />
+    <Compile Include="RiotSharp\Endpoints\TournamentEndpoint\Enums\TournamentSpectatorType.cs" />
+    <Compile Include="RiotSharp\Endpoints\TournamentEndpoint\TournamentCodeDetail.cs" />
+    <Compile Include="RiotSharp\Endpoints\TournamentEndpoint\TournamentLobbyEvent.cs" />
+    <Compile Include="RiotSharp\Http\Interfaces\IRateLimitedRequester.cs" />
+    <Compile Include="RiotSharp\Http\Interfaces\IRequester.cs" />
+    <Compile Include="RiotSharp\Http\RateLimitedRequester.cs" />
+    <Compile Include="RiotSharp\Http\RateLimiter.cs" />
+    <Compile Include="RiotSharp\Http\Requester.cs" />
+    <Compile Include="RiotSharp\Http\RequesterBase.cs" />
+    <Compile Include="RiotSharp\Http\Requesters.cs" />
+    <Compile Include="RiotSharp\Interfaces\IRiotApi.cs" />
+    <Compile Include="RiotSharp\Interfaces\IStatusRiotApi.cs" />
+    <Compile Include="RiotSharp\Interfaces\ITournamentRiotApi.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\DateTimeConverterFromLong.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\DateTimeConverterFromString.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\DateTimeConverterFromStringTimestamp.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\GameTypeConverter.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\LaneConverter.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\MapTypeConverter.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\PlatformConverter.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\RegionConverter.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\RoleConverter.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\TimeSpanConverterFromMS.cs" />
+    <Compile Include="RiotSharp\Misc\Converters\TimeSpanConverterFromS.cs" />
+    <Compile Include="RiotSharp\Misc\CultureInfoExtensions.cs" />
+    <Compile Include="RiotSharp\Misc\GameMode.cs" />
+    <Compile Include="RiotSharp\Misc\GameType.cs" />
+    <Compile Include="RiotSharp\Misc\Lane.cs" />
+    <Compile Include="RiotSharp\Misc\Language.cs" />
+    <Compile Include="RiotSharp\Misc\MapType.cs" />
+    <Compile Include="RiotSharp\Misc\Platform.cs" />
+    <Compile Include="RiotSharp\Misc\Queue.cs" />
+    <Compile Include="RiotSharp\Misc\Region.cs" />
+    <Compile Include="RiotSharp\Misc\Role.cs" />
+    <Compile Include="RiotSharp\Misc\Util.cs" />
+    <Compile Include="RiotSharp\RiotApi.cs" />
+    <Compile Include="RiotSharp\RiotSharpException.cs" />
+    <Compile Include="RiotSharp\StatusRiotApi.cs" />
+    <Compile Include="RiotSharp\TournamentRiotApi.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="RiotSharp\Properties\PublishProfiles\FolderProfile.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807271236327_InitialCreate.resx">
+      <DependentUpon>201807271236327_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807271310400_migration.resx">
+      <DependentUpon>201807271310400_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807281639468_latestmigration.resx">
+      <DependentUpon>201807281639468_latestmigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RiotSharp\RiotSharp.csproj" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
+  </Target>
+</Project>
