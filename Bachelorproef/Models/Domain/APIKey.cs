@@ -6,9 +6,16 @@ namespace DataGatherer.Domain
 {
     class APIKey
     {
-        string Key { get; set; }
-        DateTime LastTimeCalled { get; set; }
-        DateTime LastTimeFinished { get; set; }
+        public string Key { get; set; }
+        public DateTime LastTimeCalled { get; set; }
+        public DateTime LastTimeFinished { get; set; }
+
+        public APIKey(string key)
+        {
+            Key = key;
+            LastTimeCalled = DateTime.Now;
+            LastTimeFinished = DateTime.Now;
+        }
     }
 }
 

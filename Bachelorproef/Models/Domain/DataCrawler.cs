@@ -14,11 +14,13 @@ namespace DataGatherer.Domain
         public static SummonerStore Summoners { get; set; }
         public static MatchStore Matches { get; set; }
         public ChampionStore Champions { get; set; }
+        private List<APIKey> Keys { get; set; }
         public const long startSummonerId = 24328420;//29658879;//29277692;
         private static List<long> matchCompletedList = new List<long>();
         private static HashSet<long> seedList = new HashSet<long>();
         private static Queue<long> seedQueue = new Queue<long>();
         private static DataGathererContext context = new DataGathererContext();
+        private RiotApi api; 
 
         public DataCrawler()
         {
@@ -26,11 +28,16 @@ namespace DataGatherer.Domain
             Matches = new MatchStore(context);
         }
 
+        public DataCrawler(List<APIKey> keys) : base()
+        {
+            this.Keys = keys;
+        }
+
         private void InitiateSeedList()
         {
             seedQueue.Clear();
-            seedQueue.Enqueue(startSummonerId);
-            if(Summoners.Count() == 0) seedList.Add(startSummonerId);
+            
+            if(Summoners.Count() == 0) seedQueue.Enqueue(startSummonerId); //seedList.Add(startSummonerId);
             else
             {
                 foreach(KeyValuePair<long, MySummoner> entry in Summoners.Summoners)
@@ -41,7 +48,7 @@ namespace DataGatherer.Domain
             }
         }
 
-        public void StartCrawl(RiotApi api, Region region, int numberOfSummoners = 50)
+        public void StartCrawl(Region region, int numberOfSummoners = 50)
         {
             InitiateSeedList();
             using(context){
@@ -49,12 +56,14 @@ namespace DataGatherer.Domain
                 {
                     foreach (long summonerid in seedList)
                     {
-                        Console.WriteLine("Get Match history");       
+                        Console.WriteLine("Get Match history");
+                        ChooseApiKey();
                         var matchHistory = Task.Run(async () => { return await api.Match.GetMatchListAsync(region, summonerid, queues: new List<int> { 420 }, beginTime: DateTime.Now.AddDays(-5)); }).Result;
                         Console.WriteLine("Match history retrieved");
                                                     
                             foreach (MatchReference mr in matchHistory.Matches)
                             {
+                                ChooseApiKey();
                                 Match match = Task.Run(async () => { return await api.Match.GetMatchAsync(region, mr.GameId); }).Result;
                                 MyMatch matchToComplete = new MyMatch(match); 
                                 context.Matches.Add(matchToComplete);
@@ -62,17 +71,17 @@ namespace DataGatherer.Domain
                                 Console.WriteLine("Match started");
                                 if (!matchCompletedList.Contains(matchToComplete.MatchId))
                                 {
-                                    CompleteMatch(api, region, matchToComplete);
+                                    CompleteMatch(region, matchToComplete);
                                 }
                             }                     
                     }
-                    StartCrawl(api, region);
+                    StartCrawl(region);
                 }
                 
             }      
         }
 
-        public void StartCrawlQueue(RiotApi api, Region region, int numberOfSummoners = 50)
+        public void StartCrawlQueue(Region region, int numberOfSummoners = 50)
         {
             InitiateSeedList();
             using (context)
@@ -83,19 +92,20 @@ namespace DataGatherer.Domain
                     {
                         Console.WriteLine("Get Match history");
                         long summonerid = seedQueue.Dequeue();
+                        ChooseApiKey();
                         var matchHistory = Task.Run(async () => { return await api.Match.GetMatchListAsync(region, summonerid, queues: new List<int> { 420 }, beginTime: DateTime.Now.AddDays(-5)); }).Result;
                         Console.WriteLine("Match history retrieved");
 
                         foreach (MatchReference mr in matchHistory.Matches)
                         {
+                            ChooseApiKey();
                             Match match = Task.Run(async () => { return await api.Match.GetMatchAsync(region, mr.GameId); }).Result;
                             MyMatch matchToComplete = new MyMatch(match);
-                            context.Matches.Add(matchToComplete);
-                            context.SaveChanges();
+                            Matches.AddMatch(matchToComplete);
                             Console.WriteLine("Match started");
                             if (!matchCompletedList.Contains(matchToComplete.MatchId))
                             {
-                                CompleteMatch(api, region, matchToComplete);
+                                CompleteMatch(region, matchToComplete);
                             }
                         }
                     }
@@ -103,21 +113,29 @@ namespace DataGatherer.Domain
             }
         }
 
-        private void CompleteMatch(RiotApi api, Region region, MyMatch match)
+        private void CompleteMatch(Region region, MyMatch match)
         {
 
             foreach(MyParticipant p in match.Participants)
             {
+                ChooseApiKey();
                 MySummoner sum = new MySummoner(Task.Run(async () => { return await api.Summoner.GetSummonerBySummonerIdAsync(region, p.SummonerId); }).Result);
                 Summoners.AddSummoner(sum);
                 seedQueue.Enqueue(sum.SummonerId);
-                context.Summoners.Add(sum);
-                context.SaveChanges();
                 Console.WriteLine("Summoner added!");
             }
 
             matchCompletedList.Add(match.MatchId);
+
             Console.WriteLine("Match added");
+        }
+
+        private void ChooseApiKey()
+        {
+            foreach(APIKey k in Keys)
+            {
+                if ((DateTime.Now - k.LastTimeFinished).TotalSeconds > 0) api = RiotApi.GetDevelopmentInstance(k.Key);
+            }    
         }
     }  
 }

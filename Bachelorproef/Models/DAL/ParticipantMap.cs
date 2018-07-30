@@ -1,6 +1,7 @@
 ﻿using DataGatherer.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Text;
 
@@ -10,11 +11,13 @@ namespace DataGatherer.Models.DAL
     {
         public ParticipantMap()
         {
-            this.HasKey(t => t.Id);
+            this.HasKey(t => new {t.MatchId, t.SummonerId });
+            this.Property(t => t.MatchId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            this.Property(t => t.SummonerId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             this.Property(t => t.ParticipantId);
-            this.Property(t => t.MatchId);
-            this.Property(t => t.SummonerId);
+            //this.Property(t => t.MatchId);
+            //this.Property(t => t.SummonerId);
 
             this.Property(t => t.ChampionId).IsRequired();
             this.Property(t => t.Spell1Id).IsRequired();
@@ -23,6 +26,13 @@ namespace DataGatherer.Models.DAL
             this.Property(t => t.Winner).IsRequired();
 
             //items nog toevoegen
+            this.Property(t => t.Item0).IsOptional();
+            this.Property(t => t.Item1).IsOptional();
+            this.Property(t => t.Item2).IsOptional();
+            this.Property(t => t.Item3).IsOptional();
+            this.Property(t => t.Item4).IsOptional();
+            this.Property(t => t.Item5).IsOptional();
+            this.Property(t => t.Item6).IsOptional();
 
             this.Property(t => t.Kills).IsRequired();
             this.Property(t => t.Deaths).IsRequired();

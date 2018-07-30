@@ -11,6 +11,8 @@ namespace DataGatherer
     {
         public Dictionary<long, MyMatch> Matches { get; private set; }
 
+        private DataGathererContext context;
+
         public MatchStore()
         {
             Matches = new Dictionary<long, MyMatch>();   
@@ -18,6 +20,7 @@ namespace DataGatherer
 
         public MatchStore(DataGathererContext context)
         {
+            this.context = context;
             Matches = new Dictionary<long, MyMatch>(); 
             foreach(MyMatch match in context.Matches)
             {
@@ -28,7 +31,7 @@ namespace DataGatherer
         public void AddMatch(MyMatch match)
         {
             long matchid = match.MatchId;
-            if (Matches.ContainsKey(matchid))
+            if (!Matches.ContainsKey(matchid))
             {
                 Matches.Add(matchid, match);
             }

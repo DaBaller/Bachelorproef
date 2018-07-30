@@ -17,11 +17,17 @@ namespace DataGatherer
         static void Main(string[] args)
         {
             string apikeydev = "RGAPI-77b5bc80-8161-453d-9268-d3f79068f76c";  
-            string apikeylive = "RGAPI-1b4e65ed-70f0-4d6e-838e-f9795d5161f3";
-            var api = RiotApi.GetDevelopmentInstance(apikeylive);
+            string apikey2 = "RGAPI-1b4e65ed-70f0-4d6e-838e-f9795d5161f3";
+            string apikey3 = "";
+            string apikey4 = "";
+            string apikey5 = "";
+
+            List<APIKey> keys = new List<APIKey>() { new APIKey(apikeydev), new APIKey(apikey2), new APIKey(apikey3), new APIKey(apikey4), new APIKey(apikey5)};
+
+            var api = RiotApi.GetDevelopmentInstance(apikey2);
             Console.WriteLine("Api acces retrieved");
 
-            DataCrawler crawler = new DataCrawler();
+            DataCrawler crawler = new DataCrawler(keys);
             Console.WriteLine("Crawler Initiated");
             Region region = Region.euw;
             int numberofsummoners = 1000;

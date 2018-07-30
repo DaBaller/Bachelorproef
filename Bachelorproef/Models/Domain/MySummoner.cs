@@ -1,16 +1,18 @@
 ﻿using RiotSharp.Endpoints.SummonerEndpoint;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DataGatherer
 {
     class MySummoner
     {
+        [Column("id")]
         public long Id { get; set; }
         public long SummonerId { get; set; }
         public string SummonerName { get; set; }
-        public List<MyMatch> MatchHistory { get; set; }
+        public virtual List<MyMatch> MatchHistory { get; set; }
         public string Tier { get; set; }
 
         public MySummoner()

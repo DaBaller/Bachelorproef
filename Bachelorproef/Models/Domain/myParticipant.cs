@@ -9,7 +9,6 @@ namespace DataGatherer.Domain
 {
     class MyParticipant
     {
-        public long Id { get; set; }
         public long ParticipantId { get; set; }
         public long MatchId { get; set; }
         public long SummonerId { get; set; }
@@ -31,6 +30,7 @@ namespace DataGatherer.Domain
         //FirstBlood
         public bool FirstBloodKill { get; set; }
         public bool FirstBloodAssist { get; set; }
+
         //Items
         public long Item0 { get; set; }
         public long Item1 { get; set; }
@@ -39,6 +39,7 @@ namespace DataGatherer.Domain
         public long Item4 { get; set; }
         public long Item5 { get; set; }
         public long Item6 { get; set; }
+
         //DamageDealt
         public long LargestCriticalStrike { get; set; }
         public long LargestMultiKill { get; set; }
@@ -82,8 +83,6 @@ namespace DataGatherer.Domain
             MatchId = matchId;
             SummonerId = summonerId;
 
-            Id = 0;
-            
             ChampionId = championId;
             Spell1Id = spell1Id;
             Spell2Id = spell2Id;
@@ -133,9 +132,7 @@ namespace DataGatherer.Domain
             ParticipantId = participant.ParticipantId;
             MatchId = matchId;
             SummonerId = summonerId;
-
-            Id = 0;
-
+           
             ChampionId = participant.ChampionId;
             Spell1Id = participant.Spell1Id;
             Spell2Id = participant.Spell2Id;

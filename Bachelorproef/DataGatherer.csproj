@@ -110,19 +110,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201807271236327_InitialCreate.cs" />
-    <Compile Include="Migrations\201807271236327_InitialCreate.Designer.cs">
-      <DependentUpon>201807271236327_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807271310400_migration.cs" />
-    <Compile Include="Migrations\201807271310400_migration.Designer.cs">
-      <DependentUpon>201807271310400_migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807281639468_latestmigration.cs" />
-    <Compile Include="Migrations\201807281639468_latestmigration.Designer.cs">
-      <DependentUpon>201807281639468_latestmigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DAL\ChampionMap.cs" />
     <Compile Include="Models\DAL\ChampionWithStatsMap.cs" />
     <Compile Include="Models\DAL\DataGathererContext.cs" />
@@ -369,17 +356,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="RiotSharp\Properties\PublishProfiles\FolderProfile.pubxml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807271236327_InitialCreate.resx">
-      <DependentUpon>201807271236327_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807271310400_migration.resx">
-      <DependentUpon>201807271310400_migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807281639468_latestmigration.resx">
-      <DependentUpon>201807281639468_latestmigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="RiotSharp\RiotSharp.csproj" />

@@ -2,27 +2,25 @@
 using RiotSharp.Endpoints.MatchEndpoint;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DataGatherer
 {
     class MyMatch
     {
-        public long Id { get; set; }
         public long MatchId { get; set; }
         public long GameCreation { get; set; }
-        public ICollection <MyParticipant> Participants{ get; set; }
+        public virtual ICollection <MyParticipant> Participants{ get; set; }
         public long MatchDuration { get; set; }
 
         public MyMatch()
         {
-            Id = 0;
             Participants = new List<MyParticipant>();
         }
 
         public MyMatch(long matchId, long gameCreation, ICollection<MyParticipant> participants, long matchDuration)
         {
-            Id = 0; 
             MatchId = matchId;
             GameCreation = gameCreation;
             Participants = participants;
@@ -31,7 +29,6 @@ namespace DataGatherer
 
         public MyMatch(Match match)
         {
-            Id = 0;
             MatchId = match.GameId;
             GameCreation = match.GameCreation.Ticks;
             MatchDuration = match.GameDuration.Ticks;

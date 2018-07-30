@@ -10,14 +10,17 @@ namespace DataGatherer
     {
         public Dictionary<long, MySummoner> Summoners { get; private set; }
 
-        public SummonerStore()
+        private DataGathererContext context;
+
+        public SummonerStore() 
         {
             Summoners = new Dictionary<long, MySummoner>();
         }
 
         public SummonerStore(DataGathererContext context)
         {
-            Summoners = new Dictionary<long, MySummoner>(); 
+            this.context = context;
+            Summoners = new Dictionary<long, MySummoner>();
             foreach(MySummoner sum in context.Summoners)
             {
                 this.Summoners.Add(sum.SummonerId, sum);
@@ -30,6 +33,8 @@ namespace DataGatherer
             if (!Summoners.ContainsKey(summonerid))
             {
                 Summoners.Add(summonerid, summoner);
+                context.Summoners.Add(summoner);
+                context.SaveChanges();
             }    
         }
 
