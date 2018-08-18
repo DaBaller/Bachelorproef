@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataGatherer.Models.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
@@ -10,12 +11,12 @@ namespace DataGatherer.Models.DAL
     {
         public SummonerMap() {
 
-            //this.HasKey(t => t.Id);
-
             this.HasKey(t => t.SummonerId);
             this.Property(t => t.SummonerId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            this.Property(t => t.AccountId);
             this.Property(t => t.SummonerName).IsRequired();
             this.Property(t => t.Tier).IsOptional();
+            this.Property(t => t.IsCompleted).IsOptional();
 
             this.ToTable("Summoners");
 

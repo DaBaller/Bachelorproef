@@ -37,7 +37,9 @@ namespace RiotSharp.Misc
         /// <summary>
         /// Corresponds to bot lane.
         /// </summary>
-        Bottom
+        Bottom, 
+
+        None
     }
 
     static class LaneExtension
@@ -58,6 +60,8 @@ namespace RiotSharp.Misc
                     return "MIDDLE";
                 case Lane.Top:
                     return "TOP";
+                case Lane.None:
+                    return "NONE";
                 default:
                     return string.Empty;
             }

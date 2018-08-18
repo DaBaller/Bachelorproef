@@ -26,6 +26,8 @@ namespace RiotSharp.Endpoints.MatchEndpoint.Enums.Converters
                     return LaneType.MidLane;
                 case "TOP_LANE":
                     return LaneType.TopLane;
+                case "NONE":
+                    return LaneType.None;
                 default:
                     return null;
             }

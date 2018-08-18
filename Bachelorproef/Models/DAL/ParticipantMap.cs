@@ -1,4 +1,4 @@
-﻿using DataGatherer.Domain;
+﻿using DataGatherer.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,20 +19,22 @@ namespace DataGatherer.Models.DAL
             //this.Property(t => t.MatchId);
             //this.Property(t => t.SummonerId);
 
-            this.Property(t => t.ChampionId).IsRequired();
             this.Property(t => t.Spell1Id).IsRequired();
             this.Property(t => t.Spell2Id).IsRequired();
             this.Property(t => t.TeamId).IsRequired();
             this.Property(t => t.Winner).IsRequired();
 
             //items nog toevoegen
-            this.Property(t => t.Item0).IsOptional();
-            this.Property(t => t.Item1).IsOptional();
-            this.Property(t => t.Item2).IsOptional();
-            this.Property(t => t.Item3).IsOptional();
-            this.Property(t => t.Item4).IsOptional();
-            this.Property(t => t.Item5).IsOptional();
-            this.Property(t => t.Item6).IsOptional();
+            this.Property(t => t.ChampionId).IsRequired();
+
+            this.Property(t => t.Item0Id).HasColumnName("Item0");
+            this.Property(t => t.Item1Id).HasColumnName("Item1"); ;
+            this.Property(t => t.Item2Id).HasColumnName("Item2"); ;
+            this.Property(t => t.Item3Id).HasColumnName("Item3"); ;
+            this.Property(t => t.Item4Id).HasColumnName("Item4"); ;
+            this.Property(t => t.Item5Id).HasColumnName("Item5"); ;
+            this.Property(t => t.Item6Id).HasColumnName("Item6"); ;
+            
 
             this.Property(t => t.Kills).IsRequired();
             this.Property(t => t.Deaths).IsRequired();
@@ -59,7 +61,7 @@ namespace DataGatherer.Models.DAL
             this.Property(t => t.TotalDamageTaken).IsRequired();
 
             this.Property(t => t.WardsPlaced).IsRequired();
-            this.Property(t => t.wardsKilled).IsRequired();
+            this.Property(t => t.WardsKilled).IsRequired();
             this.Property(t => t.VisionWardsBoughtInGame).IsRequired();
 
             this.Property(t => t.MinionsKilled).IsRequired();

@@ -22,7 +22,9 @@ namespace RiotSharp.Endpoints.MatchEndpoint.Enums
         /// <summary>
         /// Corresponds to the top lane.
         /// </summary>
-        TopLane
+        TopLane, 
+
+        None
     }
 
     static class LaneTypeExtension
@@ -37,6 +39,8 @@ namespace RiotSharp.Endpoints.MatchEndpoint.Enums
                     return "MID_LANE";
                 case LaneType.TopLane:
                     return "TOP_LANE";
+                case LaneType.None:
+                    return "NONE";
                 default:
                     return string.Empty;
             }

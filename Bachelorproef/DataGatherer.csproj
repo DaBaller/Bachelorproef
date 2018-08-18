@@ -88,6 +88,8 @@
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
     </Reference>
@@ -110,6 +112,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201808161143054_1stMigration.cs" />
+    <Compile Include="Migrations\201808161143054_1stMigration.Designer.cs">
+      <DependentUpon>201808161143054_1stMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808161819599_2ndMigration.cs" />
+    <Compile Include="Migrations\201808161819599_2ndMigration.Designer.cs">
+      <DependentUpon>201808161819599_2ndMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171601352_3rdMigration.cs" />
+    <Compile Include="Migrations\201808171601352_3rdMigration.Designer.cs">
+      <DependentUpon>201808171601352_3rdMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DAL\ChampionMap.cs" />
     <Compile Include="Models\DAL\ChampionWithStatsMap.cs" />
     <Compile Include="Models\DAL\DataGathererContext.cs" />
@@ -120,6 +135,7 @@
     <Compile Include="Models\Domain\APIKey.cs" />
     <Compile Include="Models\Domain\ChampionStore.cs" />
     <Compile Include="Models\Domain\DataCrawler.cs" />
+    <Compile Include="Models\Domain\ItemStore.cs" />
     <Compile Include="Models\Domain\MatchStore.cs" />
     <Compile Include="Models\Domain\MyChampion.cs" />
     <Compile Include="Models\Domain\MyChampionWithStats.cs" />
@@ -354,11 +370,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Models\Domain\ClassDiagram.cd" />
+    <None Include="Models\Domain\Participant.cd" />
     <None Include="packages.config" />
     <None Include="RiotSharp\Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RiotSharp\RiotSharp.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808161143054_1stMigration.resx">
+      <DependentUpon>201808161143054_1stMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808161819599_2ndMigration.resx">
+      <DependentUpon>201808161819599_2ndMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171601352_3rdMigration.resx">
+      <DependentUpon>201808171601352_3rdMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

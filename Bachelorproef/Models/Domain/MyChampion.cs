@@ -5,11 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataGatherer.Domain
+namespace DataGatherer.Models.Domain
 {
-    class MyChampion
+    public class MyChampion
     {
-        public long ChampId { get; set; }
+        public int ChampId { get; set; }
         public string Name { get; set; }
         public string ImageId { get; set; }
         public string Passive { get; set; }
@@ -38,7 +38,12 @@ namespace DataGatherer.Domain
         public double MRPerLevel { get; set; }
         public string ResourceType { get; set; }
 
-        public MyChampion(long champId, string name, string imageId, string passive, /*List<ChampionSpellStatic> spells,*/ double baseArmor, double mp5PerLevel, double baseMp5, double mpPerLevel, double baseMp, double baseMoveSpeed, double hp5PerLevel, double baseHp5, double hpPerLevel, double baseHp, double critPerLevel, double baseCrit, double attackSpeedPerLevel, double attackSpeedOffset, double attackRange, double aDPerLevel, double baseAD, double armorPerLevel, double baseMR, double mRPerLevel, string resourceType)
+        public MyChampion()
+        {
+
+        }
+
+        public MyChampion(int champId, string name, string imageId, string passive, /*List<ChampionSpellStatic> spells,*/ double baseArmor, double mp5PerLevel, double baseMp5, double mpPerLevel, double baseMp, double baseMoveSpeed, double hp5PerLevel, double baseHp5, double hpPerLevel, double baseHp, double critPerLevel, double baseCrit, double attackSpeedPerLevel, double attackSpeedOffset, double attackRange, double aDPerLevel, double baseAD, double armorPerLevel, double baseMR, double mRPerLevel, string resourceType)
         {
             ChampId = champId;
             Name = name;
@@ -73,7 +78,7 @@ namespace DataGatherer.Domain
             ChampId = champion.Id;
             Name = champion.Name;
             ImageId = champion.Image.Full;
-            Passive = champion.Passive.SanitizedDescription;
+            Passive = champion.Passive.Description;
             //Spells = spells;
             BaseArmor = champion.Stats.Armor;
             Mp5PerLevel = champion.Stats.MpRegenPerLevel;

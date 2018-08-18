@@ -1,18 +1,19 @@
-﻿using DataGatherer.Domain;
+﻿
 using RiotSharp.Endpoints.MatchEndpoint;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace DataGatherer
+namespace DataGatherer.Models.Domain
 {
-    class MyMatch
+    public class MyMatch
     {
         public long MatchId { get; set; }
         public long GameCreation { get; set; }
         public virtual ICollection <MyParticipant> Participants{ get; set; }
         public long MatchDuration { get; set; }
+        public bool IsCompleted { get; set; }
 
         public MyMatch()
         {
@@ -25,6 +26,7 @@ namespace DataGatherer
             GameCreation = gameCreation;
             Participants = participants;
             MatchDuration = matchDuration;
+            IsCompleted = false;
         }
 
         public MyMatch(Match match)
@@ -42,8 +44,14 @@ namespace DataGatherer
                 {
                     if (pi.ParticipantId == p.ParticipantId) summonerId = pi.Player.SummonerId;
                 }
-                Participants.Add(new MyParticipant(p, match.GameId, summonerId, p.Timeline.Lane, p.Timeline.Role));
+                //Participants.Add(new MyParticipant(p, match.GameId, summonerId, p.Timeline.Lane, p.Timeline.Role));
             }
+            IsCompleted = false;
+        }
+
+        public void MatchCompleted()
+        {
+            IsCompleted = true;
         }
     }
 }

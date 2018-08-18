@@ -4,37 +4,41 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace DataGatherer
+namespace DataGatherer.Models.Domain
 {
-    class MySummoner
+    public class MySummoner
     {
-        [Column("id")]
-        public long Id { get; set; }
+
         public long SummonerId { get; set; }
+        public long AccountId { get; set; }
         public string SummonerName { get; set; }
         public virtual List<MyMatch> MatchHistory { get; set; }
         public string Tier { get; set; }
+        public bool IsCompleted { get; set; }
 
         public MySummoner()
         {
-            Id = 0;
             MatchHistory = new List<MyMatch>();
         }
 
-        public MySummoner(int summonerId, string summonerName, List<MyMatch> matchHistory, string tier)
+        public MySummoner(int summonerId, long accountid, string summonerName, List<MyMatch> matchHistory, string tier)
         {
-            Id = 0; 
+ 
             SummonerId = summonerId;
+            AccountId = accountid;
             SummonerName = summonerName;
             this.MatchHistory = matchHistory;
             Tier = tier;
+            IsCompleted = false;
         }
 
         public MySummoner(Summoner summoner)
         {
-            Id = 0;
             SummonerId = summoner.Id;
+            AccountId = summoner.AccountId;
             SummonerName = summoner.Name;
+            IsCompleted = false;
+
 
             MatchHistory = new List<MyMatch>();
         }
@@ -42,6 +46,11 @@ namespace DataGatherer
         public void AddMatchToHistory(MyMatch match)
         {
             MatchHistory.Add(match);
+        }
+
+        public void SummonerCompleted()
+        {
+            IsCompleted = true;
         }
     }
 }

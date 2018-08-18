@@ -1,15 +1,13 @@
 ﻿using DataGatherer.Models.DAL;
-using RiotSharp.Endpoints.MatchEndpoint;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace DataGatherer
+
+namespace DataGatherer.Models.Domain
 {
     class MatchStore
     {
-        public Dictionary<long, MyMatch> Matches { get; private set; }
+        public Dictionary<long, MyMatch> Matches { get; set; }
 
         private DataGathererContext context;
 
@@ -34,8 +32,22 @@ namespace DataGatherer
             if (!Matches.ContainsKey(matchid))
             {
                 Matches.Add(matchid, match);
+                context.Matches.Add(match);
+                context.SaveChanges();
             }
         }
 
+        public int Count()
+        {
+            return Matches.Count;
+        }
+
+
+        internal void CompleteMatch(MyMatch match)
+        {
+            match.MatchCompleted();
+            MyMatch matchtoupdate = context.Matches.Where(m => m.MatchId == match.MatchId).FirstOrDefault();
+            context.Entry(matchtoupdate).CurrentValues.SetValues(match);
+        }
     }
 }

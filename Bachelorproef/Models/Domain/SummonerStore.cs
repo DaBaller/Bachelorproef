@@ -2,9 +2,10 @@
 using RiotSharp.Endpoints.SummonerEndpoint;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace DataGatherer
+namespace DataGatherer.Models.Domain
 {
     class SummonerStore
     {
@@ -54,5 +55,11 @@ namespace DataGatherer
             
         }
 
+        internal void CompleteSummoner(MySummoner summoner)
+        {
+            summoner.SummonerCompleted();
+            MySummoner sumtoupdate = context.Summoners.Where(s => s.SummonerId == summoner.SummonerId).FirstOrDefault();
+            context.Entry(sumtoupdate).CurrentValues.SetValues(summoner);
+        }
     }
 }

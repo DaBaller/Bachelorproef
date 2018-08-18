@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataGatherer.Domain
+namespace DataGatherer.Models.Domain
 {
     class APIKey
     {
         public string Key { get; set; }
         public DateTime LastTimeCalled { get; set; }
-        public DateTime LastTimeFinished { get; set; }
 
         public APIKey(string key)
         {
             Key = key;
+            LastTimeCalled = DateTime.Now.AddSeconds(-10);
+        }
+
+        public void CallKey()
+        {
             LastTimeCalled = DateTime.Now;
-            LastTimeFinished = DateTime.Now;
         }
     }
 }

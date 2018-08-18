@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataGatherer.Models.Domain.MyChampion" Collapsed="true">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAgBIACEAAAACAAUAQEABiEAIEgBQACABAAAAA=</HashCode>
+      <FileName>Models\Domain\MyChampion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataGatherer.Models.Domain.MyItem" Collapsed="true">
+    <Position X="5.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABAAEIAAAAABqMAkAAEAAQgTABhQQFAGAAAIAAAVAE=</HashCode>
+      <FileName>Models\Domain\MyItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataGatherer.Models.Domain.MyMatch" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Participants" Type="DataGatherer.Models.Domain.MyParticipant">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.4" Y="0.073" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAoAQAAAAAAAAAAAAAAAAACAAAAABAAACAAAAAAAAA=</HashCode>
+      <FileName>Models\Domain\MyMatch.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Participants" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataGatherer.Models.Domain.MyParticipant" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Item0" Type="DataGatherer.Models.Domain.MyItem" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.625" Y="1.5" />
+        <Point X="7.625" Y="0.625" />
+        <Point X="5.25" Y="0.625" />
+        <Point X="5.25" Y="1" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.032" Y="0.559" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Item1" Type="DataGatherer.Models.Domain.MyItem" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.625" Y="1.5" />
+        <Point X="7.625" Y="0.625" />
+        <Point X="5.438" Y="0.625" />
+        <Point X="5.438" Y="1" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.23" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Item2" Type="DataGatherer.Models.Domain.MyItem" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.625" Y="1.5" />
+        <Point X="7.625" Y="0.625" />
+        <Point X="5.625" Y="0.625" />
+        <Point X="5.625" Y="1" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.389" Y="0.572" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Item3" Type="DataGatherer.Models.Domain.MyItem" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.625" Y="1.5" />
+        <Point X="7.625" Y="0.625" />
+        <Point X="5.875" Y="0.625" />
+        <Point X="5.875" Y="1" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.415" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Item4" Type="DataGatherer.Models.Domain.MyItem" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.625" Y="1.5" />
+        <Point X="7.625" Y="0.625" />
+        <Point X="6.188" Y="0.625" />
+        <Point X="6.188" Y="1" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.507" Y="0.545" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Item5" Type="DataGatherer.Models.Domain.MyItem" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.625" Y="1.5" />
+        <Point X="7.625" Y="0.625" />
+        <Point X="6.438" Y="0.625" />
+        <Point X="6.438" Y="1" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.402" Y="0.084" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Item6" Type="DataGatherer.Models.Domain.MyItem" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.594" Y="1.5" />
+        <Point X="7.594" Y="0.625" />
+        <Point X="6.688" Y="0.625" />
+        <Point X="6.688" Y="1" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.652" Y="0.545" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Match" Type="DataGatherer.Models.Domain.MyMatch" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.75" Y="1.521" />
+        <Point X="9.125" Y="1.521" />
+        <Point X="9.125" Y="0.688" />
+        <Point X="9.5" Y="0.688" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Champion" Type="DataGatherer.Models.Domain.MyChampion">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.176" Y="0.02" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>JEAhEkIoFoJACCAQGUykAJkCKCoZFAQikYMEB1AAzJg=</HashCode>
+      <FileName>Models\Domain\myParticipant.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Item0" />
+      <Property Name="Item1" />
+      <Property Name="Item2" />
+      <Property Name="Item3" />
+      <Property Name="Item4" />
+      <Property Name="Item5" />
+      <Property Name="Item6" />
+      <Property Name="Summoner" />
+      <Property Name="Match" />
+      <Property Name="Champion" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataGatherer.Models.Domain.MySummoner" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAABAACAgABAAAAAAgAAAAAg=</HashCode>
+      <FileName>Models\Domain\MySummoner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
